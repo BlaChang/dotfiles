@@ -1,5 +1,11 @@
 return {
   "lewis6991/gitsigns.nvim",
+  keys = {
+    {"<Leader>gn", "<cmd>Gitsigns nav_hunk next<CR>", desc = "Go to next git hunk"},
+    {"<Leader>gN", "<cmd>Gitsigns nav_hunk prev<CR>", desc = "Go to previous hunk"},
+    {"<Leader>gr", "<cmd>Gitsigns reset_hunk<CR>", desc = "Reset git hunk"},
+    {"<Leader>gs", "<cmd>Gitsigns stage_hunk<CR>", desc = "Stage current git hunk"},
+  },
   opts = {
     signs = {
       add          = { text = '┃' },
