@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
     bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
     bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr><cmd>cclose<cr>')
     bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
     bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
     bufmap({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>')
