@@ -1,0 +1,18 @@
+
+[[Snippets]]
+  Description = "Extract a .tar.gz file"
+  Output = ""
+  Tag = ["utility"]
+  command = "tar -xvzf <input>"
+
+[[Snippets]]
+  Description = "Curl test"
+  Output = ""
+  Tag = []
+  command = "curl --header \"Content-Type: application/json\" \\\n--request POST \\\n--data '{\"username\":\"xyz\",\"password\":\"xyz\"}' \\\n http://localhost:3000/api/login"
+
+[[Snippets]]
+  Description = "Create a new tmux session"
+  Output = ""
+  Tag = ["tmux"]
+  command = "tmux new -s <name:0>"
