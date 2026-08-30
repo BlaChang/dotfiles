@@ -16,3 +16,16 @@
   Output = ""
   Tag = ["tmux"]
   command = "tmux new -s <name:0>"
+
+[[Snippets]]
+  Description = "Trash many files from commandline"
+  Output = ""
+  Tag = []
+  command = "ls | sed \"s/.*/'&'/\" | fzf -m | xargs trash"
+
+[[Snippets]]
+  Description = "Mount something using sshfs"
+  Output = ""
+  Tag = ["sshfs"]
+  command = "sshfs blachang@myth.stanford.edu:CS107 CS107 -o reconnect"
+

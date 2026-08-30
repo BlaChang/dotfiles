@@ -17,7 +17,19 @@ return
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = 'default' },
+      enabled = function()
+        -- Get current buffer's filetype
+        local filetype = vim.bo.filetype
+
+        -- Disable blink completely for markdown files
+        if filetype == "markdown" or filetype == "tex" then
+          return false
+        end
+
+        -- Keep default behaviors active for all other filetypes
+        return true
+      end,
+      keymap = { preset = 'super-tab' },
 
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'

@@ -1,0 +1,5 @@
+#!/bin/bash
+function prev() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "pet new `printf %q "$PREV"`"
+}

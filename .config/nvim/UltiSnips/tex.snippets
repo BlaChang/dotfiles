@@ -14,15 +14,28 @@ def env(name):
 endglobal
 
 
-snippet template "Basic template" b
-\documentclass[a4paper]{article}
+snippet pset-template "Basic template" b
+\documentclass{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \usepackage[dutch]{babel}
 \usepackage{amsmath, amssymb}
+\usepackage[most]{tcolorbox}
+\usepackage[bottom=2.5cm, right=2.5cm, left=2.5cm, top=2.5cm]{geometry}
 
+% problem template 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+		\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+% answer template
+\newenvironment{answer}{
+	\begin{tcolorbox}[breakable, colback=blue!5!white, colframe=blue!75!black, title=My Solution]
+}{
+	\end{tcolorbox}
+	\newpage
+}
 
 % figure support
 \usepackage{import}
@@ -38,6 +51,11 @@ snippet template "Basic template" b
 \pdfsuppresswarningpagegroup=1
 
 \begin{document}
+	\title{Math XXX Homework N}
+	\author{By: Blake Chang}
+	\date{}
+
+	\maketitle
 	$0
 \end{document}
 endsnippet
@@ -47,10 +65,22 @@ snippet bk "brackets" iA
 {$1}$0
 endsnippet
 
+context math()
+snippet binom "binomial" i 
+\\binom{$1}{$0}
+endsnippet
+
 snippet beg "begin{} / end{}" bA
 \\begin{$1}
 	$0
 \\end{$1}
+endsnippet
+
+snippet ans "begin{answer} / end{answer} \newpage" bA
+\\begin{answer}
+	$0
+\\end{answer}
+\\newpage
 endsnippet
 
 priority 100
@@ -113,13 +143,15 @@ snippet iff "iff" Ai
 \iff
 endsnippet
 
+#Alternate Math
+#$${1}$`!p
+#if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+#	snip.rv = ' '
+#else:
+#	snip.rv = ''
+#`$2
 snippet mk "Math" wA
-$${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-	snip.rv = ' '
-else:
-	snip.rv = ''
-`$2
+$${1}$$2
 endsnippet
 
 snippet dm "Math" wA
@@ -129,9 +161,11 @@ ${1:${VISUAL}}
 endsnippet
 
 snippet ali "Align" bA
-\begin{align*}
+\[
+\begin{aligned}
 	${1:${VISUAL}}
-.\end{align*}
+\end{aligned}
+\]
 endsnippet
 
 
@@ -305,7 +339,7 @@ snippet sq "\sqrt{}" iA
 endsnippet
 
 context "math()"
-snippet sr "^2" iA
+snippet sr "^2" i
 ^2
 endsnippet
 
@@ -346,7 +380,12 @@ endsnippet
 
 context "math()"
 snippet EE "geq" iA
-\exists 
+\mathbb{E}
+endsnippet
+
+context "math()"
+snippet CC "geq" iA
+\mathbb{C}
 endsnippet
 
 context "math()"
@@ -563,15 +602,15 @@ snippet OO "emptyset" iA
 endsnippet
 
 snippet RR "real" iA
-\R
+\mathbb{R}
 endsnippet
 
 snippet QQ "Q" iA
-\Q
+\mathbb{Q}
 endsnippet
 
 snippet ZZ "Z" iA
-\Z
+\mathbb{Z}
 endsnippet
 
 snippet <! "normal" iA
@@ -650,6 +689,10 @@ endsnippet
 
 snippet DD "D" iA
 \mathbb{D}
+endsnippet
+
+snippet PP "P" iA
+\mathbb{P}
 endsnippet
 
 # vim:ft=snippets
